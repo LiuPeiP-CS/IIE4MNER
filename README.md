@@ -1,4 +1,4 @@
-# MGCMT
+# MNER
 
 ## Requirements(Ubuntu 18.04.5 LTS, Nvidia Titan Xp)
 
@@ -17,7 +17,7 @@ Download the pre-trained Mask-RCNN via this link (https://github.com/matterport/
 ## Datasets
 You can download the two twitter datasets from [here](https://drive.google.com/drive/folders/1j83-VH1Gp3eFRKEMOJqkH3Qojk7nJQwL?usp=sharing)
 
-## Training for MGCMT
+## Training for MNER
 This is the training code of tuning parameters on the dev set, and testing on the test set:
 ```python
 
