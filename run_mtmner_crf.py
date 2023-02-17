@@ -1095,7 +1095,6 @@ def main():
 
             if F_score_dev > max_dev_f1:
                 # Save a trained model and the associated configuration
-                """
                 model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
                 encoder_to_save = encoder.module if hasattr(encoder,
                                                             'module') else encoder  # Only save the model it-self
@@ -1108,25 +1107,10 @@ def main():
                                 "max_seq_length": args.max_seq_length, "num_labels": len(label_list) + 1,
                                 "label_map": label_map}
                 json.dump(model_config, open(os.path.join(args.output_dir, "model_config.json"), "w"))
-                """
+                
                 max_dev_f1 = F_score_dev
                 best_dev_epoch = train_idx
-            if F_score_test > max_test_f1:
-                model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
-                encoder_to_save = encoder.module if hasattr(encoder,
-                                                            'module') else encoder  # Only save the model it-self
-                torch.save(model_to_save.state_dict(), output_model_file)
-                torch.save(encoder_to_save.state_dict(), output_encoder_file)
-                with open(output_config_file, 'w') as f:
-                    f.write(model_to_save.config.to_json_string())
-                label_map = {i: label for i, label in enumerate(label_list, 1)}
-                model_config = {"bert_model": args.bert_model, "do_lower": args.do_lower_case,
-                                "max_seq_length": args.max_seq_length, "num_labels": len(label_list) + 1,
-                                "label_map": label_map}
-                json.dump(model_config, open(os.path.join(args.output_dir, "model_config.json"), "w"))
 
-                max_test_f1 = F_score_test
-                best_test_epoch = train_idx
 
     print("**************************************************")
     print("The best epoch on the dev set: ", best_dev_epoch)
